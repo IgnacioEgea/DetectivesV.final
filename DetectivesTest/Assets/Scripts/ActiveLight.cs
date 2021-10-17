@@ -6,9 +6,6 @@ public class ActiveLight : MonoBehaviour
 {
     public GameObject SpawnLight;
 
-    public float Timer;
-    public float ResetTimer;
-
     private void Start()
     {
         SpawnLight.SetActive(false);
@@ -17,14 +14,5 @@ public class ActiveLight : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         SpawnLight.SetActive(true);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (Timer <= 0)
-        {
-            Timer = ResetTimer;
-        }
-        Timer -= Time.deltaTime;
     }
 }
