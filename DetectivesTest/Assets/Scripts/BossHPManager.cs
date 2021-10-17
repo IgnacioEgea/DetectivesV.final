@@ -11,6 +11,8 @@ public class BossHPManager : MonoBehaviour
     public float maxHealth;
     float healthAux;
     public GameObject PercentActive;
+    public GameObject Disable;
+    public GameObject ActiveGO;
     private void Awake()
     {
         cmpMovementIA = GetComponent<BossIA>();
@@ -29,6 +31,8 @@ public class BossHPManager : MonoBehaviour
     {
         healthAux = maxHealth;
         PercentActive.SetActive(false);
+        Disable.SetActive(true);
+        ActiveGO.SetActive(true);
     }
 
     public void BossReceivedDamage(float damage)
@@ -41,6 +45,8 @@ public class BossHPManager : MonoBehaviour
         {
             cmpMovementIA.CambiarFaseBoss(EnumBoss.BossIA.BossStages.LowLife);
             PercentActive.SetActive(true);
+            Disable.SetActive(false);
+            ActiveGO.SetActive(false);
 
         }
         else if (maxHealth <= healthAux * 0.5f)
